@@ -11,6 +11,7 @@ import importlib
 basic_async_syntax = importlib.import_module('0-basic_async_syntax')
 wait_random = getattr(basic_async_syntax, 'wait_random')
 
+
 def task_wait_random(max_delay: int) -> asyncio.Task:
     '''
     Args:
@@ -20,10 +21,9 @@ def task_wait_random(max_delay: int) -> asyncio.Task:
     '''
     return asyncio.create_task(wait_random(max_delay))
 
+
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
     '''
-    Function that spawns multiple instances of task_wait_random and returns a list of their results.
-
     Args:
         n (int): number of times to spawn task_wait_random
         max_delay (int): maximum delay time
@@ -36,8 +36,8 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     for _ in range(n):
         task = task_wait_random(max_delay)
         tasks.append(task)
-    
+
     delays = await asyncio.gather(*tasks)
     delays.sort()
-    
+
     return delays
