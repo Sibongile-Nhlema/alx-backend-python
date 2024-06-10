@@ -27,5 +27,5 @@ def measure_time(n: int, max_delay: int) -> float:
         await wait_n(n, max_delay)
         end_time = time.perf_counter()
         return (end_time - start_time) / n
-    
+
     return asyncio.run(async_measure_time())
