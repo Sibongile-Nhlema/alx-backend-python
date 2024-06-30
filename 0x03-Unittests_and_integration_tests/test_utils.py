@@ -19,7 +19,6 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-
     def test_access_nested_map(self, nested_map: Dict[str, Any],
                                path: Tuple[str, ...], expected: Any) -> None:
         '''
@@ -31,9 +30,8 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
     ])
-
     def test_access_nested_map_exception(self, nested_map: Dict[str, Any],
-                               path: Tuple[str, ...]) -> None:
+                                         path: Tuple[str, ...]) -> None:
         '''
         Tests access_nested_map with invalid inputs
         '''
@@ -50,8 +48,8 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
     ])
-
-    def test_get_json(self, test_url: str, test_payload: Dict[str, Any]) -> None:
+    def test_get_json(self, test_url: str,
+                      test_payload: Dict[str, Any]) -> None:
         '''
         Test get_json returns the expected result and makes a single call
         '''
@@ -84,7 +82,8 @@ class TestMemoize(unittest.TestCase):
             def a_property(self):
                 return self.a_method()
 
-        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+        with patch.object(TestClass, 'a_method',
+                          return_value=42) as mock_method:
             test_instance = TestClass()
 
             # Call the a_property twice
