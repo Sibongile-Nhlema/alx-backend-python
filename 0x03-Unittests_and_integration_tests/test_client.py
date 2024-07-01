@@ -29,7 +29,7 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_url: str = GithubOrgClient.ORG_URL.format(org=org_name)
 
         mock_get_json.return_value = {"org_name": org_name}
-        org_info: Dict[str, str] = client.org()
+        org_info: Dict[str, str] = client.org() # error on this line
 
         self.assertEqual(org_info["org_name"], org_name)
         mock_get_json.assert_called_once_with(mock_url)
